@@ -6,13 +6,13 @@ using UnityEngine;
 public class BaseState
 {
     public string name;
-    protected StateMachine stateMachine; //Protected significa que solo puede ser usado por  BaseState y sus hijos y no de otras clases
+    protected StateMachine currentStateMachine; //Protected significa que solo puede ser usado por  BaseState y sus hijos y no de otras clases
 
     //Contructor
     public BaseState(string name, StateMachine stateMachine) 
     {
         this.name = name;
-        this.stateMachine = stateMachine;
+        this.currentStateMachine = stateMachine;
     }
 
 
