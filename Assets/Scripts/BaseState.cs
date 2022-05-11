@@ -1,22 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-//Para todos los estados.Este no será usado. Solo sera como la plantilla de todos los otros estados que heredaran esta clase.
+//Plantilla para crear estados. Estos heredaran esta clase.
 public class BaseState
 {
-    public string name;
-    protected StateMachine currentStateMachine; //Protected significa que solo puede ser usado por  BaseState y sus hijos y no de otras clases
+    public string m_StateName;
 
     //Contructor
-    public BaseState(string name, StateMachine stateMachine) 
+    public BaseState(string name)
     {
-        this.name = name;
-        this.currentStateMachine = stateMachine;
+        m_StateName = name;
     }
 
 
-    public virtual void Enter() //Virtual significa que la implementación la haran los hijos y no BaseState
+    public virtual void Enter() //Virtual significa que los hijos pueden hacer override
     { 
     }
 

@@ -1,25 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementSM : StateMachine
 {
     [HideInInspector]
-    public Idle idleState;
+    public Idle m_IdleState;
 
     [HideInInspector]
-    public Moving movingState;
+    public Walk m_WalkState;
+
+    /* Custom variables here */
+    public Rigidbody m_RigidBody;
+    public float m_Speed = 4.0f;
 
     private void Awake()
     {
         //Initialize the states
-        idleState = new Idle(this); // le pasamos a su constructor esta clase "MovementSM"
-        movingState = new Moving(this);
+        m_IdleState = new Idle(this); // this = referencia de este script "MovementSM"
+        m_WalkState = new Walk(this);
     }
 
     protected override BaseState GetInitialState() //Cogemos el estado en que empezamos
     {
-        return idleState;
+        return m_IdleState;
     }
 
 }

@@ -4,40 +4,40 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    BaseState currentState;
+    BaseState _CurrentState;
 
     void Start()
     {
-        currentState = GetInitialState();
+        _CurrentState = GetInitialState();
 
-        if (currentState != null) 
+        if (_CurrentState != null) 
         {
-            currentState.Enter();
+            _CurrentState.Enter();
         }
     }
 
 
     void Update()
     {
-        if (currentState != null)
+        if (_CurrentState != null)
         {
-            currentState.UpdateLogic();
+            _CurrentState.UpdateLogic();
         }
     }
 
     private void LateUpdate()
     {
-        if (currentState != null)
+        if (_CurrentState != null)
         {
-            currentState.UpdatePhysics();
+            _CurrentState.UpdatePhysics();
         }
     }
 
     public void ChangeState(BaseState newState) 
     {
-        currentState.Exit(); //Salimos del estado actual
-        currentState = newState; //Asignamos el nuevo estado
-        currentState.Enter(); //Entramos al nuevo estado
+        _CurrentState.Exit(); //Salimos del estado actual
+        _CurrentState = newState; //Asignamos el nuevo estado
+        _CurrentState.Enter(); //Entramos al nuevo estado
     }
 
     protected virtual BaseState GetInitialState() 
@@ -49,15 +49,15 @@ public class StateMachine : MonoBehaviour
     {
         string content;
 
-        if (currentState != null)
+        if (_CurrentState != null)
         {
-            content = currentState.name;
+            content = _CurrentState.m_StateName;
         }
         else 
         {
             content = "(no current state)";
         }
 
-        GUILayout.Label($"<color='black'><size = 40>{content}</size></color>");
+        GUILayout.Label($"<color='black'><size=40>{content}</size></color>"); //No spaces allowed in tags
     }
 }
